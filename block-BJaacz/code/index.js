@@ -22,7 +22,7 @@ let addTwoToArray = (arr) => {
   let final =[];
   let i=0;
   for(num of arr){
-    final[i] = num += 2;
+    final[i] = addTwo(num);
     i++;
   }
   return final;
@@ -37,7 +37,7 @@ let addThreeToArray = (arr) => {
   let final =[];
   let i=0;
   for(num of arr){
-    final[i] = num += 3;
+    final[i] = addThree(num);
     i++;
   }
   return final;
@@ -52,7 +52,7 @@ let addFiveToArray = (arr) => {
   let final =[];
   let i=0;
   for(num of arr){
-    final[i] = num += 5;
+    final[i] = addFive(num);
     i++;
   }
   return final;
@@ -73,8 +73,7 @@ let changeArray = (arr, cb) =>{
   let final = []
   let i =0;
   for (const number of arr) {
-    final[i] = cb(number);
-    i++;
+    final.push(cb(number));
   }
   return final;
 }
@@ -120,10 +119,11 @@ console.log(third(5));
   - also write the required code to call the function.
 */
 let callMe = (cb) => {
-  let final = cb;
+  let final = cb();
   return final;
 }
-callMe(third(6));
+let test = callMe(function(){return `random function`});
+console.log(test)
 // Data Starts (Don't change this)
 const people = [
   { name: 'John Doe', age: 16 },
@@ -209,7 +209,7 @@ console.log(isFemale(grades[2])); // false
     console.log(isGradeA(grade[2])); // true
 */
 let isGradeA = (obj) => {
-  return obj.grade > 12;
+  return obj.grade > 12; 
 }
 console.log(isGradeA(grades[0])); // false
 console.log(isGradeA(grades[1])); // false
