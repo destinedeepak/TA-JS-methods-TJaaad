@@ -236,20 +236,67 @@ Example:
   - repeat: method constructs and returns a new string which contains the specified number of copies of the string on which it was called, concatenated together.
 
 15. `replace`
-  - syntax:  `str.repeat(count)`
+  - syntax:  `str.replace(substr, newSubstr)`
 
-  - Parameter: a count as number
+  - Parameter: two strings, first to match and second to replace
 
-  - Return: return the repeated string
+  - Return: A new string, with some or all match replaced by a replacement.
 
   ```js
   let user="Deepak"
-
-  user.repeat(2); //"DeepakDeepak"
-  user.repeat(2.5); //"DeepakDeepak"
-  user.repeat(1/2);//error
+  let bio="learning full stack development"
+  
+  user.replace("e", "a"); //"Daapak"
+  bio.replace("full","") //"learning  stack development"
   ```
-  - repeat: method constructs and returns a new string which contains the specified number of copies of the string on which it was called, concatenated together.
+  - replace: The replace() method returns a new string with some or all matches replaced by a replacement
+
 16. `slice`
+  - syntax:  `slice(startIndex, endIndex[optional])`
+
+  - Parameter: two index, first to start from and second which is optonal to end(does not include last)
+
+  - Return: A new string
+
+  ```js
+  let user="Deepak"
+  let bio="learning full stack development"
+  
+  user.slice(1, 4); //"eep"
+  bio.slice(-3) //"ent"
+  bio.slice(2,-3) //"arning full stack developm"
+  ```
+  - slice: extracts a section of a string and returns it as a new string, without modifying the original string.
+
 17. `split`
+- syntax:  `split(separator, limit[optional])`
+
+  - Parameter: seperator is a string and limit is number which is optional
+
+  - Return: An array of strings
+
+  ```js
+  let user="Deepak"
+  let bio="learning full stack development"
+  
+  user.split(""); //["D", "e", "e", "p", "a", "k"]
+  bio.split(" ") //["learning", "full", "stack", "development"]
+  bio.split("") // ["l", "arning full stack d", "v", "lopm", "nt"]
+  ```
+  - split:  divides a String into an ordered list of substrings, puts these substrings into an array, and returns the array.
+
 18. `substring`
+- syntax:  `substring(startIndex, indexEnd[optional])`
+
+  - Parameter: two index as number data type
+
+  - Return: a string
+
+  ```js
+  let user="Deepak"
+  let bio="learning full stack development"
+  
+  user.substring(1, 3); // "ee"
+  bio.substring(5); // "ing full stack development"
+  ```
+  - substring:  returns the part of the string between the start and end indexes, or to the end of the string..
