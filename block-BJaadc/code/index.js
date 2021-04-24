@@ -1,7 +1,7 @@
 let message = 'If you are still thinking the answer is no!';
 
 // Log the length of the variable message like `The length of [message] is [length]`
-console.log(`The length of ${message} is ${length}`);
+console.log(`The length of ${message} is ${message.length}`);
 
 // Log the character at index 0 of the variable message like `The first character of [message] is [character]`
 console.log(`The first character of ${message} is ${message.charAt(0)}`);
@@ -22,7 +22,7 @@ console.log(message.indexOf(`answers`))
 console.log(message.indexOf("answers") === -1 ? false : true)
 
 // Log true or false based on whether the word "they" exist in message or not
-console.log(message.indexOf("they") === -1 ? false : true)
+console.log(message.indexOf("they") !== -1)
 
 // Log true or false based on whether the word "is" exist in message or not
 console.log(message.indexOf("is") === -1 ? false : true)
@@ -34,7 +34,7 @@ console.log(message.indexOf("Is") === -1 ? false : true)
 console.log(message.slice(3,6) === "you" ? true : false)
 
 // Check and log whether the word from index 7 to 8 is "a" or not
-console.log(message.slice(3,6) === "you" ? true : false)
+console.log(message.slice(7,8) === "you" ? true : false)
 
 // Check and log whether the last 3 character in message is "no!" or not (you can use -3 in slice)
 console.log(message.slice(-3) === "no!" ? true : false)
@@ -49,7 +49,7 @@ console.log(message.toLowerCase())
 console.log(message.toUpperCase())
 
 // Replace the word "are" to "can't", store it in a new variable named `newMessage` and log it.
-let newMessage = message.replace("are", "can")
+let newMessage = message.replace("are", "can't~")
 console.log(newMessage)
 
 // Replace the word "still" to "" (empty) using newMessage variable, and re-assign the output to the variable `newMessage` and log it.
