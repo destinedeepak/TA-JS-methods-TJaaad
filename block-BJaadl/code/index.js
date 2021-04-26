@@ -11,10 +11,8 @@ let words = [
 
 // - Write a function findLongestWord that takes an array of words and returns the longest word from the array. (Use above array "words" to test it). If there are 2 with the same length, it should return the first occurrence.
 function findLongestWord(arrayOfWords){
-  let temp = [...arrayOfWords].sort((a,b)=>{
-    return a.length - b.length
-  })
-return temp[temp.length - 1]
+  return [...arrayOfWords].sort((a,b)=>a.length - b.length).pop()
+
 }
 console.log(findLongestWord(words))
 
@@ -23,6 +21,7 @@ console.log(words.map((word)=>word.length))
 
 // - Create a new array that only contains word with atleast one vowel.
 newArray = words.filter((word)=>{
+  word = word.toLowerCase()
   if(word.includes('a') ||
   word.includes('e') ||
   word.includes('i') ||
@@ -36,7 +35,7 @@ newArray = words.filter((word)=>{
 console.log(newArray)
 
 // - Find the index of the word "rhythm"
-words.indexOf("rhythm")
+words.findIndex((word)=>word === "rhythm")
 
 // - Create a new array that contians words not starting with vowel.
 newArray1 =  words.filter((word)=>{
@@ -70,10 +69,9 @@ let numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 // - Create a sumArray function that takes an array of number as a parameter, and calculate the sum of all its numbers
 let sumArray = (array)=>{
-  let temp = array.reduce((acc , cv)=>{
+  return array.reduce((acc , cv)=>{
     return acc + cv
   },0)
-  return temp;
 }
 console.log(sumArray(numbers))
 
@@ -132,7 +130,7 @@ let strings = [
 
 // - Write a function averageWordLength that receives an array of words2 and calculate the average length of the words.
 function averageWordLength(array){
-  let sumOfLength = array.reduce((acc, cv) => acc + cv.length,0)
+  let sumOfLength = array.reduce((acc, cv)  => acc + cv.length,0)
   return sumOfLength/array.length
 }
 console.log(averageWordLength(strings))
