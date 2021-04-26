@@ -11,8 +11,7 @@ console.log(fruits.length)
 
 // Remove the first element from fruits and log the value of fruits (use delete arr[0])
 delete fruits[0];
-console.log(fruits)
-
+console.log(fruits) 
 // Log the element on index 0 and 1
 console.log(fruits[0])
 
@@ -61,32 +60,49 @@ let numbersTwo = [1, 2, [3, 4, [5, 6]]];
 let numbersThree = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
 
 // Convert the numbers array to one level element. Remove sub-arrays to individual elements and log them
-let temp = numbers.flat(Infinity);
+let temp = numbers.flat();
+console.log(temp)
 
 // Convert the numbersTwo array to one level element. Remove all sub-arrays to individual elements and log them.
 // (for multiple level flat accepts argument by default it's 1 `array.flat(2)`)
+let temp2 = numbersTwo.flat(2)
+console.log(temp2)
 
 // Convert the numbersThree array to one level element.
+let temp3 = numbersThree.flat(1)
 // Remove all sub-arrays to individual elements, log them and update the value of numbersThree to the new flat array.
+numbersThree = numbersThree.flat(Infinity)
 
 // Use forEach to log all the elements of numberThree array
+numbersThree.forEach((number)=>console.log(number))
 
 // Create a new variable named doubleNumbers that store the numberThree array (each element should be multiplied by 2). Use map
+let doubleNumbers = numbersThree.map((number)=>number*2)
 
 // Create a new variable named tripleNumbers that store the numberThree array (each element should be multiplied by 3). Use map
+let tripleNumbers = numbersThree.map((number)=>number*3)
 
 // Create a new variable named halfNumbers that store the numberThree array (each element should be divided by 2). Use map
+let halfNumbers = numbersThree.map((number)=>number/2)
 
 // Create a new variable named oddNumbers that store all the odd numbers in numbersThree array
+let oddNumbers = numbersThree.filter((number)=>number % 2 !== 0)
 
 // Create a new variable named evenNumbers that store all the even numbers in numbersThree array
+let evenNumbers = numbersThree.filter((number)=>number % 2 === 0)
 
 // Find the index of 10 in numbersThree array
+console.log(numbersThree.indexOf(10))
 
 // Reverse the values of numbersThree array
+console.log(numbersThree.reverse())
 
 // Reverse the values of numbersTwo array
+console.log(numbersTwo.reverse())
 
 // Join all fruits with '-', convert to uppercase and log it
+console.log(fruits.join().toUpperCase())
 
 // Join all fruits with '&', convert to lowercase and log it
+console.log(fruits.join('&').toLowerCase())
+
