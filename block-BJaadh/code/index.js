@@ -28,9 +28,10 @@ console.log(strings.join(" "))
 console.log([...strings].shift())
 
 // - Find all the words that contain 'is' use string method 'includes'
-
+console.log(strings.filter((string)=>string.includes("is")))
 
 // - Find all the words that contain 'is' use string method 'indexOf'
+console.log(strings.filter((string)=>string.indexOf("is") !== -1))
 
 // - Check if all the numbers in numbers array are divisible by three use array method (every)
 console.log(numbers.every((number)=>{return number % 3 === 0}))
@@ -46,13 +47,8 @@ console.log([...strings].pop());
 console.log(sortedNumbers[sortedNumbers.length-1])
 
 // - Find longest string in strings
-let final=" ";
-console.log(strings)
-strings.forEach(element => {
-  if(element.length > final.length) 
-  final = element
-});
-console.log(final)
+console.log(`Find longest string in strings`)
+console.log([...strings].sort((string1,string2)=>string1.length- string2.length).pop())
 
 // - Find all the even numbers
 let evenNumbers = numbers.filter((number)=>number % 2 === 0)
@@ -63,7 +59,7 @@ let oddNumbers = numbers.filter((number)=>number % 2 !== 0)
 console.log(oddNumbers)
 
 // - Place a new word at the start of the array use (unshift)
-numbers.unshift(5)
+numbers.unshift("New Word")
 
 // - Make a subset of numbers array [18,9,7,11]
 console.log(numbers.slice(4,8))
@@ -93,8 +89,12 @@ console.log(stringLengthArray)
 
 // - Find the sum of the length of words using above question
 let sumOfLength=0;
-stringLengthArray.forEach(length=> sumOfLength+= length)
-console.log(sumOfLength)
+// stringLengthArray.forEach(length=> sumOfLength+= length)
+// console.log(sumOfLength)
+console.log(stringLengthArray.reduce((acc, cv)=>{
+  acc = acc + cv
+  return acc
+},0))
 
 // - Customers Array
 var customers = [
@@ -124,7 +124,16 @@ console.log(newArray1)
 newArray1.sort()
 
 // - Create a new array that contains only user who has at least one vowel in the firstname.
+console.log(`Create a new array that contains only user who has at least one vowel in the firstname.`)
 let  newArray3 = customers.filter((customer)=>{
-  return customer.firstname.includes("a" || "e" || "i" || "o" || "u" )
+  if(customer.firstname.includes("a") ||
+  customer.firstname.includes("e") ||
+  customer.firstname.includes("i") ||
+  customer.firstname.includes("o") ||
+  customer.firstname.includes("u")){
+    return true
+  }else{
+    false
+  }
 }) 
 console.log(newArray3)
