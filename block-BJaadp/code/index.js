@@ -16,18 +16,75 @@ let persons = [
 // NOTE: Use reduce method whereever you can to solve this exercise:
 
 // Find the average grade
+function averageGrade(array){
+  return array.reduce((acc, person)=>{
+    acc = acc + person.grade
+    return acc
+  },0)/persons.length
+}
 
 // Find the average grade of male
+function averageMaleGrade(array){
+  return array.filter((person)=>{
+    return person.sex === 'M'
+  }).reduce((acc , person, i, array)=>{
+    acc += person.grade
+    return acc
+  },0)/array.length
+}
 
 // Find the average grade of female
+function averageFemaleGrade(array){
+  let filteredArray =  array.filter((person)=>{
+    return person.sex === 'F'
+  });
+
+  return filteredArray.reduce((acc , person, i, array1)=>{
+    acc = acc + person.grade
+    return acc
+  },0)/filteredArray.length
+}
 
 // Find the highest grade
+function highestGrade(array){
+  return array.reduce((acc,ele)=>{
+    if(ele.grade > acc){
+      acc = ele.grade
+      return acc
+    }
+    return acc
+  },0)
+}
 
 // Find the highest grade in male
+function highestMaleGrade(array){
+  let filteredArray =  array.filter((person)=>{
+    return person.sex === 'M'
+  });
+
+  return highestGrade(filteredArray)
+}
 
 // Find the highest grade in female
+function highestFemaleGrade(array){
+  let filteredArray =  array.filter((person)=>{
+    return person.sex === 'F'
+  });
+
+  return highestGrade(filteredArray)
+}
+
 
 // Find the highest grade for people whose name starts with 'J' or 'P'
+function HighestGradeWith(array){
+  let filteredArray =  array.filter((person)=>{
+    if(person.name.startsWith('J') || person.name.startsWith('P')){
+      return person;
+    }
+  });
+
+  return highestGrade(filteredArray)
+}
 
 const fruitBasket = [
   'banana',
@@ -40,17 +97,24 @@ const fruitBasket = [
   'banana',
   'cherry',
   'orange',
-  'fig',
+  'fig'
 ];
 
 /* 
 
 Use the fruitBasket array to create an object where key will be the fruit and value will be the number of times
 that fruit has appeared in the array. Store it in new variable fruitsObj
-
 Output: 
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
+let fruitsObj = {}
+  fruitBasket.forEach((fruit)=>{
+    if(fruit in fruitsObj === false){
+      fruitsObj[fruit] = 1
+    }else{
+      fruitsObj[fruit] = fruitsObj[fruit] + 1
+    }
+  })
 
 /* 
 
@@ -62,6 +126,13 @@ Output:
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
 
+objectKeys = Object.keys(fruitsObj);
+let object1 = objectKeys.map((fruitKey)=>{
+  let temp = []
+  temp.push(fruitKey, fruitsObj[fruitKey])
+   return temp
+})
+
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -70,6 +141,7 @@ const data = [
 ];
 
 // Using reduce flat data array
+data.flat(Infinity);
 
 const dataTwo = [
   [1, 2, 3],
@@ -79,7 +151,11 @@ const dataTwo = [
 ];
 
 // Using reduce flat dataTwo array
-
+let dataTwoFlat = []
+dataTwo.reduce((acc , ele)=>{
+acc += ele
+return acc
+},[])
 /*
 
 Create these functions which accepts a number value and returns a number value:
@@ -89,6 +165,21 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
+function increment(value){
+  return ++value
+}
+function double(value){
+  return value * 2
+}
+function decrement(value){
+  return --value
+}
+function triple(value){
+  return value * 3
+}
+function half(value){
+  return value/2
+}
 
 let pipeline = [
   increment,
@@ -114,19 +205,26 @@ EXAMPLE:
 
   ...
 */
-
-let pipeline2 = [
-  increment,
-  half,
-  double,
-  decrement,
-  decrement,
-  triple,
-  double,
-  triple,
-  half,
-  increment,
-  triple,
-];
+pipeline.reduce((acc, ele)=>{
+  acc = ele(acc)
+  return acc
+},3)
+// let pipeline2 = [
+//   increment,
+//   half,
+//   double,
+//   decrement,
+//   decrement,
+//   triple,
+//   double,
+//   triple,
+//   half,
+//   increment,
+//   triple,
+// ];
 
 // Find the output using pipeline2 the initial value if 8
+pipeline.reduce((acc, ele)=>{
+  acc = ele(acc)
+  return acc
+},8)
