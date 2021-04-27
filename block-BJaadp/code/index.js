@@ -107,14 +107,23 @@ that fruit has appeared in the array. Store it in new variable fruitsObj
 Output: 
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
-let fruitsObj = {}
-  fruitBasket.forEach((fruit)=>{
-    if(fruit in fruitsObj === false){
-      fruitsObj[fruit] = 1
+// let fruitsObj = {}
+//   fruitBasket.forEach((fruit)=>{
+//     if(fruit in fruitsObj === false){
+//       fruitsObj[fruit] = 1
+//     }else{
+//       fruitsObj[fruit] = fruitsObj[fruit] + 1
+//     }
+//   })
+  let fruitsObj = fruitBasket.reduce((acc, cv)=>{
+    if(acc[cv]){
+      acc[cv] = acc[cv]+1;
+      return acc
     }else{
-      fruitsObj[fruit] = fruitsObj[fruit] + 1
+      acc[cv] = 1
+      return acc
     }
-  })
+  },{})
 
 /* 
 
@@ -127,11 +136,16 @@ Output:
 */
 
 objectKeys = Object.keys(fruitsObj);
-let object1 = objectKeys.map((fruitKey)=>{
-  let temp = []
-  temp.push(fruitKey, fruitsObj[fruitKey])
-   return temp
-})
+// let object1 = objectKeys.map((fruitKey)=>{
+//   let temp = []
+//   temp.push(fruitKey, fruitsObj[fruitKey])
+//    return temp
+// })
+objectKeys.reduce((acc, cv)=>{
+  acc = acc.concat([[cv, fruitsObj[cv]]])
+return acc
+},[])
+
 
 const data = [
   [1, 2, 3],
@@ -141,7 +155,10 @@ const data = [
 ];
 
 // Using reduce flat data array
-data.flat(Infinity);
+data.reduce((acc , ele)=>{
+acc = acc.concat(ele)
+return acc
+},[])
 
 const dataTwo = [
   [1, 2, 3],
@@ -151,9 +168,8 @@ const dataTwo = [
 ];
 
 // Using reduce flat dataTwo array
-let dataTwoFlat = []
 dataTwo.reduce((acc , ele)=>{
-acc += ele
+acc = acc.concat(ele.flat(Infinity))
 return acc
 },[])
 /*
