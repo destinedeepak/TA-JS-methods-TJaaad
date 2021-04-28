@@ -1,35 +1,73 @@
 // NOTE: You can only use the (reduce) array method to solve this exercise:
 
 function countAllPeople() {
-  // your code goes here
+  return got.houses.reduce((acc , house)=>{
+    return acc+= house.people.length
+  },0)
 }
 
 function peopleByHouses() {
-  // your code goes here
+  return got.houses.reduce((acc, house)=>{
+    acc[house.name] = house.people.length
+    return  acc
+  },{})
 }
 
 function everyone() {
-  // your code goes here
+  return got.houses.reduce((acc, house)=>{
+    return acc.concat(house.people.map((person=>{
+      return person.name
+    })))
+  },[])
 }
 
 function nameWithS() {
-  // your code goes here
+  return everyone().reduce((acc, person)=>{
+    if(person.toLowerCase().includes('s')){
+    acc.push(person)
+    return acc
+    }
+    return acc
+  },[])
 }
 
 function nameWithA() {
-  // your code goes here
+  return everyone().reduce((acc, person)=>{
+    if(person.toLowerCase().includes('a')){
+    acc.push(person)
+    return acc
+    }
+    return acc
+  },[])
 }
 
 function surnameWithS() {
-  // your code goes here
+  return everyone().reduce((acc, person)=>{
+    if(person.split(" ")[1][0] === 'S'){
+    acc.push(person)
+    return acc
+    }
+    return acc
+  },[])
 }
 
 function surnameWithA() {
-  // your code goes here
+  return everyone().reduce((acc, person)=>{
+    if(person.split(" ")[1][0] === 'A'){
+    acc.push(person)
+    return acc
+    }
+    return acc
+  },[])
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  return got.houses.reduce((acc, house)=>{
+   acc[house.name] = house.people.map((person)=>{
+     return person.name;
+   })
+   return acc
+  },{})
 }
 
 // Testing your result after writing your function
@@ -48,15 +86,15 @@ console.log(nameWithS(), 'with s');
 // Output should be
 // ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
 
-console.log(nameWithA());
-// Output should be
-// ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
+console.log(nameWithA(), 'with a');
+// // Output should be
+// // ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon", "Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Yara Greyjoy", "Margaery Baratheon", "Loras Tyrell", "Catelyn Stark", "Lysa Arryn", "Olenna Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
 console.log(surnameWithS(), 'surname with s');
 // Output should be
 // ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow", "Catelyn Stark"]
 
-console.log(surnameWithA());
+console.log(surnameWithA(), 'surname with a');
 // Output should be
 // ["Lysa Arryn", "Jon Arryn"]
 
