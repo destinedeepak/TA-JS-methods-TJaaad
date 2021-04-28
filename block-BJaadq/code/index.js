@@ -76,11 +76,9 @@ function peopleNameOfAllHouses() {
   let tempObj = {}
   let tempArray = []
   got.houses.forEach(house=>{
-     house.people.forEach(person=>{
-      tempArray.push(person.name)
+    tempObj[house.name] = house.people.map(person=>{
+      return person.name;
     })
-    tempObj[house.name] = tempArray
-    tempArray = []
   })
   return tempObj; 
 }
