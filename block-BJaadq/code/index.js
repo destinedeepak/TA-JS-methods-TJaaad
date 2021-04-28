@@ -1,35 +1,88 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
 function countAllPeople() {
-  // your code goes here
+  let count =0;
+  got.houses.forEach(house => {
+    count += house.people.length
+  });
+  return count
 }
 
 function peopleByHouses() {
-  // your code goes here
+  got.houses.forEach(house => {
+    console.log(`${house.name}: ${house.people.length}`)
+  });  
 }
 
 function everyone() {
-  // your code goes here
+  let tempArray = []
+  got.houses.forEach(house=>{
+    house.people.forEach(person=>{
+      tempArray.push(person.name)
+  })
+})
+return tempArray
 }
 
 function nameWithS() {
-  // your code goes here
+  let tempArray = []
+  got.houses.forEach(house=>{
+    house.people.forEach(person=>{
+      if(person.name.toLocaleLowerCase().includes('s')){
+        tempArray.push(person.name)
+      }
+  })
+})
+return tempArray
 }
 
 function nameWithA() {
-  // your code goes here
+  let tempArray = []
+  got.houses.forEach(house=>{
+    house.people.forEach(person=>{
+      if(person.name.toLocaleLowerCase().includes('a')){
+        tempArray.push(person.name)
+      }
+  })
+})
+return tempArray
 }
 
 function surnameWithS() {
-  // your code goes here
+  let tempArray = []
+  got.houses.forEach(house=>{
+    house.people.forEach(person=>{
+      if(person.name.split(" ")[1][0] === 'S'){
+        tempArray.push(person.name)
+      }
+  })
+})
+return tempArray
 }
 
 function surnameWithA() {
-  // your code goes here
+  let tempArray = []
+  got.houses.forEach(house=>{
+    house.people.forEach(person=>{
+      if(person.name.split(" ")[1][0] === 'A'){
+        tempArray.push(person.name)
+      }
+  })
+})
+return tempArray
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let tempObj = {}
+  let tempArray = []
+  got.houses.forEach(house=>{
+     house.people.forEach(person=>{
+      tempArray.push(person.name)
+    })
+    tempObj[house.name] = tempArray
+    tempArray = []
+  })
+  return tempObj; 
 }
 
 // Testing your result after writing your function
